@@ -2,8 +2,8 @@
 This is our code submission for NoSQL final project. We have implemented 3-node custer, with a master-slave architecture, and dynamic features such as load balancing, fault tolerance, dynamic shard management, sharding, replkication, merge O(N). 
 
 # Team Members:
-Jashwanth Kadaru
-Pannaga Bhat
-Ashish
-Anuj
+Jashwanth Kadaru </br>
+Pannaga Bhat </br>
+Ashish </br>
+Anuj </br>
   
