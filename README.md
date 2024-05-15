@@ -4,6 +4,6 @@ This is our code submission for NoSQL final project. We have implemented 3-node 
 # Team Members:
 Jashwanth Kadaru </br>
 Pannaga Bhat </br>
-Ashish </br>
-Anuj </br>
+Ashish Meher </br>
+Anuj Arora </br>
   
