@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Distributed NoSQL Cluster</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <link href="styles.css" rel="stylesheet" />
+    <!-- Link to D3.js -->
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+
+    <!-- Link to Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <style>
+      .node circle {
+        fill: green;
+        stroke: black;
+      }
+      .node text {
+        fill: white;
+        font-size: 12px;
+        text-anchor: middle;
+        alignment-baseline: middle;
+      }
+      .link {
+        stroke: black;
+        stroke-width: 2;
+      }
+      .shard {
+        fill: gray;
+        stroke: black;
+      }
+    </style>
+  </head>
+
+  <body class="bg-gradient-to-r from-blue-400 to-purple-500 p-8">
+    <div class="cluster-parent-container mx-auto">
+      <!-- Cluster Visualization Section -->
+      <div class="mb-8">
+        <h2 class="text-2xl font-semibold text-white mb-4">
+          Cluster Visualization
+        </h2>
+        <div id="cluster-visualization" class="bg-white p-4 rounded shadow-md">
+          <!-- Cluster visualization content goes here -->
+          <!-- <svg width="800" height="400" id="cluster_vis_svg"></svg> -->
+          <button id="update-cluster-info">Refresh Cluster</button>
+          <div id="cluster-container" width="800" height="400"></div>
+        </div>
+      </div>
+
+      <div class="container">
+        <h2>Node Fault Tolerance</h2>
+        <div>
+          <div class="mb-4">
+            <label for="node-select" class="block text-gray-700 font-semibold"
+              >Select Node:</label
+            >
+            <select
+              id="node-select"
+              class="mt-1 block h-8 pl-2 w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+            >
+              <option value="node1">Node 1</option>
+              <option value="node2">Node 2</option>
+              <option value="node3">Node 3</option>
+              <option value="none">None</option>
+            </select>
+
+            <button id="'update-fault-nodes">Update Nodes</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Node and Shard Data Section -->
+      <div class="container mb-8">
+        <h2>Node to Shard Mapping</h2>
+        <button id="reload-node-map">Reload Node Map</button>
+        <table id="node-map">
+          <thead>
+            <tr>
+              <th>Node</th>
+              <th>Shard</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Node to shard mapping data will be populated dynamically -->
+          </tbody>
+        </table>
+        <h2>Shard to Shard Range Mapping</h2>
+        <button id="reload-shard-map">Reload Shard Map</button>
+        <table id="shard-map">
+          <thead>
+            <tr>
+              <th>Shard</th>
+              <th>Range</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Shard to shard range mapping data will be populated dynamically -->
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Query Section -->
+      <div>
+        <h2 class="text-2xl font-semibold text-white mb-4">Query Nodes</h2>
+        <div class="bg-white p-4 rounded shadow-md">
+          <div class="mb-4">
+            <label for="server-id" class="block text-gray-700 font-semibold"
+              >Server ID:</label
+            >
+            <select
+              id="server-id"
+              class="mt-1 h-8 border-1 block w-full border-gray-600 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+            >
+              <!-- Server ID options will be populated dynamically -->
+            </select>
+          </div>
+          <div class="mb-4">
+            <label for="query-type" class="block text-gray-700 font-semibold"
+              >Query Type:</label
+            >
+            <select
+              id="query-type"
+              class="mt-1 h-8 border-1 block w-full border-gray-600 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+            >
+              <option value="search">Search</option>
+              <option value="update">Update</option>
+              <option value="merge">Merge</option>
+            </select>
+          </div>
+          <div id="query-options">
+            <!-- Query options will be populated dynamically based on the selected query type -->
+          </div>
+          <button
+            id="submit-query"
+            class="mt-4 bg-gradient-to-r from-purple-400 to-pink-600 text-white font-semibold py-2 px-4 rounded shadow-md hover:from-pink-600 hover:to-purple-400"
+          >
+            Submit
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <script src="client.js"></script>
+  </body>
+</html>
